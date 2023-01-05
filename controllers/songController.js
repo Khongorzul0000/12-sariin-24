@@ -1,19 +1,19 @@
-const {Song}= require("../models/Playlistmodel")
-exports.createSong = async (req, res) =>{
-    const body = req.body;
-    const result = await new Song(body).save();
-    res.send(result);
-}
+const { Song } = require("../models");
 
-exports.getSong = async (req, res) =>{
+const createSong = async (req, res) => {
+  const body = req.body;
+  const result = await new Song(body).save();
+  res.send(result);
+};
 
-    const playlistId = req.query.playlistId;
+const getSongs = async (req, res) => {
+  const result = await Song.find({});
+  res.send(result);
+};
 
-    if(playlistId){
-        const result = await Song.findById(playlistId);
-    res.send(result);
+const getSong = async (req, res) => {
+  const result = await Song.findById(req.params.id);
+  res.send(result);
+};
 
-    }
-    const result = await Song.find({})
-    res.send(result);
-}
+module.exports = { createSong, getSongs, getSong };

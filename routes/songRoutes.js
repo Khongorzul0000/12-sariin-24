@@ -1,11 +1,12 @@
 const express = require("express");
-const { createSong, getSong } = require("../controllers/songController");
+const { songController } = require("../controllers");
 
 const router = express.Router();
 
 router
-  .get("/songs", getSong)
-  .post("/songs", createSong)
+  .get("/songs", songController.getSongs)
+  .get("/song/:id", songController.getSong)
+  .post("/songs", songController.createSong)
   .put("/song/:id", () => {})
   .delete("/song/:id", () => {});
 
