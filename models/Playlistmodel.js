@@ -17,12 +17,11 @@ const playlistSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-//   user: {
-//     type: Schema.Types.ObjectId,
-//     required: true,
-//     ref: "User",
-//   },
-
+  // userId: {
+  //   type: Schema.Types.ObjectId,
+  //   required: true,
+  //   ref: "User",
+  // },
   songs: [
     {
       type: Schema.Types.ObjectId,

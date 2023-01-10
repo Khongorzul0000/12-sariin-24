@@ -16,6 +16,10 @@ const userSchema = new Schema({
     password:{
         type:String,
         required:true,
+    },
+    playlist:{
+        type:Object,
+        required:true,
     }
 });
 

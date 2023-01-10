@@ -16,4 +16,11 @@ getPlaylist = async (req, res) => {
   res.send(result);
 };
 
-module.exports = { createPlaylist, getPlaylists, getPlaylist };
+deletePlaylist = async (req, res) => {
+  const id = req.params.id
+  const result = await Playlist.findByIdAndDelete({_id:id});
+  res.send(result);
+};
+
+
+module.exports = { createPlaylist, getPlaylists, getPlaylist, deletePlaylist };
