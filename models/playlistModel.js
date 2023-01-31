@@ -17,18 +17,24 @@ const playlistSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  // userId: {
-  //   type: Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: "User",
-  // },
+  
   songs: [
     {
       type: Schema.Types.ObjectId,
       ref: "Song",
     },
   ],
-});
+},
+{
+  toJSON: {virtuals:true}
+}
+);
+playlistSchema.virtual("posts",{
+  ref:"Song",
+  localField:"_id",
+  foreignField:"author_id"
+
+})
 
 const Playlist = model("Playlist", playlistSchema);
 

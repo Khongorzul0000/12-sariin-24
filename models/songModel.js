@@ -1,4 +1,4 @@
-const {Schema, Types, model} = require('mongoose');
+const {Schema, Types, model, default: mongoose} = require('mongoose');
 
 const songSchema = new Schema({
     title: {
@@ -7,13 +7,18 @@ const songSchema = new Schema({
     },
     playlistId:Types.ObjectId,
     artist: {
-        type:Schema.Types.ObjectId,
+        type:String,
         ref:"Artist"
     }, 
     createdAt:{
         type:Date, 
         default:Date.now()
     },
+    author_id:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Playlist"
+    }
+    
 });
 
 const Song =model('Song', songSchema)

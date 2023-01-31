@@ -18,9 +18,12 @@ app.use(songRoutes);
 app.use(userRoutes);
 app.use(artistRoutes);
 
+
 app.get('/',(_req, res) =>{
     res.send("Hello world");
 })
+
+
 
 app.listen(port, () =>{
     console.log("serverrunning at:", port)

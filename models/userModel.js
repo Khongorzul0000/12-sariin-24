@@ -20,7 +20,8 @@ const userSchema = new Schema({
     playlist:{
         type:Object,
         required:true,
-    }
+    },
+    
 });
 
 const User =model('User', userSchema)

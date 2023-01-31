@@ -12,7 +12,7 @@ const getSongs = async (req, res) => {
 };
 
 const getSong = async (req, res) => {
-  const result = await Song.findById(req.params.id);
+  const result = await Song.findById(req.params.id).populate("User");
   res.send(result);
 };
 
