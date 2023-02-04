@@ -8,6 +8,6 @@ router
   .get("/song/:id", songController.getSong)
   .post("/songs", songController.createSong)
   .put("/song/:id", () => {})
-  .delete("/song/:id", () => {});
+  .delete("/song/:id", songController.deleteSong);
 
 exports.songRoutes = router;

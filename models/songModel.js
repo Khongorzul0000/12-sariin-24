@@ -1,26 +1,30 @@
-const {Schema, Types, model, default: mongoose} = require('mongoose');
+const { Schema, Types, model, default: mongoose } = require('mongoose');
 
-const songSchema = new Schema({
-    title: {
-        type:String,
-        required:true
+const songSchema = new Schema(
+    {
+        title: {
+            type: String,
+            required: true,
+        },
+        playlistId: Types.ObjectId,
+        artist: {
+            type: String,
+            ref: 'Artist',
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now(),
+        },
+        author_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Playlist',
+        },
     },
-    playlistId:Types.ObjectId,
-    artist: {
-        type:String,
-        ref:"Artist"
-    }, 
-    createdAt:{
-        type:Date, 
-        default:Date.now()
+    {
+        toJSON: { virtuals: true },
     },
-    author_id:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Playlist"
-    }
-    
-});
+);
 
-const Song =model('Song', songSchema)
+const Song = model('Song', songSchema);
 
-exports.Song = Song
+exports.Song = Song;
